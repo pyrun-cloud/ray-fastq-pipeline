@@ -1,7 +1,6 @@
 FROM public.ecr.aws/docker/library/python:3.10-slim-buster
 
 ARG FUNCTION_DIR="/function"
-ARG LITHOPS
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -20,11 +19,9 @@ RUN wget -q https://raw.githubusercontent.com/circulosmeos/gztool/master/gztool.
 RUN pip install --no-cache-dir \
       ipykernel \
       ipywidgets \
-      "$LITHOPS" \
       ray \
       scikit-learn \
       cloud-dataplug \
       cloud-data-cockpit
 
 WORKDIR ${FUNCTION_DIR}
-
